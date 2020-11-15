@@ -1,0 +1,15 @@
+{
+    "name": "ShopScipt",
+    "references": [
+        "GUID:901f58161650d0e488033eaca48fd1aa"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
