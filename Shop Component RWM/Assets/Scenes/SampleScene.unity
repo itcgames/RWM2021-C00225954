@@ -357,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 3717921987386041686, guid: aa147d87b03d6b649937d4c373de614b,
         type: 3}
       propertyPath: windowSlots
-      value: 50
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3717921987386041686, guid: aa147d87b03d6b649937d4c373de614b,
         type: 3}
@@ -394,7 +394,7 @@ PrefabInstance:
     - target: {fileID: 3717921987386041686, guid: aa147d87b03d6b649937d4c373de614b,
         type: 3}
       propertyPath: cellsize
-      value: 30.8
+      value: 66.5
       objectReference: {fileID: 0}
     - target: {fileID: 3717921987386041686, guid: aa147d87b03d6b649937d4c373de614b,
         type: 3}
