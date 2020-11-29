@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 3717921987386041691}
   - component: {fileID: 3717921987386041684}
   - component: {fileID: 3717921987386041685}
-  - component: {fileID: 3717921987386041686}
+  - component: {fileID: 6928612890976722783}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3717921987386041686
+--- !u!114 &6928612890976722783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -188,24 +188,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 3717921987386041687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b7f1e92392c864aa6c11e279eaf588, type: 3}
+  m_Script: {fileID: 11500000, guid: 0049c85f6b6d0ea4794e73b6bad1faa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: 0dd161332225fea4a8b514f396a937a2, type: 3}
-  Width: 777
-  Height: 625
-  backgroundScale: 0.36
+  background: {fileID: 21300000, guid: 6d31f5cca32dc6f41a2018c770db063d, type: 3}
+  Width: 0
+  Height: 0
+  backgroundScale: 0
   scaleAllToBackground: 0
-  backgroundPosition: {x: 59.8, y: 66.14}
-  Title: SHOP
-  TitlePosition: {x: 10, y: 10}
-  font: {fileID: 0}
+  backgroundPosition: {x: 0, y: 0}
+  Title: 
+  TitlePosition: {x: 0, y: 0}
+  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   fontSize: 0
   fontColor: {r: 0, g: 0, b: 0, a: 0}
-  purchaseWindowSlot: {fileID: 0}
+  gridBackgroundSprite: {fileID: 21300000, guid: 6ea215c17df51f549ba32b44455f8517,
+    type: 3}
+  itemBorderBoxSprite: {fileID: 21300000, guid: 0669fa00c9740f64c929f531aee81a34,
+    type: 3}
   purchaseWindowPos: {x: 0, y: 0}
+  purchaseGridBackgroundSize: {x: 0, y: 0}
   windowSlots: 0
-  windowSlot: {fileID: 0}
+  cellsize: 0
+  constraintCount: 0
+  itemBoxGridOffset: 0
 --- !u!1 &3717921987409611500
 GameObject:
   m_ObjectHideFlags: 0
