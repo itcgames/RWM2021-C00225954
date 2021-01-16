@@ -52,10 +52,10 @@ public class ShopMenuController : MonoBehaviour
     public Vector2 purchaseWindowPos;
     public Vector2 purchaseGridBackgroundSize;
 
-    [Range(1, 50)]
-    public int windowSlots;
-    [Range(10, 200)]
-    public float cellsize;
+
+    int windowSlots;
+
+    public Vector2 cellsize;
     [Range(1, 10)]
     public int constraintCount;
     [Range(1, 100)]
@@ -66,13 +66,21 @@ public class ShopMenuController : MonoBehaviour
 
     public GameObject[] items;
     public GameObject buttonPrefab;
-    
+
     public Color buttonHoveredColour;
 
 
 
     public GameObject Player;
     int playerMoney;
+
+    public Sprite currencyTabSprite;
+    public Vector2 currencyTabSize;
+    public Vector2 currencyTabOffset;
+    public int currencyTabFontSize;
+    GameObject currencyTab;
+    Text currencyText;
+    Text TitleOb;
     // Start is called before the first frame update
     void Start()
     {
@@ -87,33 +95,30 @@ public class ShopMenuController : MonoBehaviour
             Height *= backgroundScale;
             itemBoxGridOffset *= backgroundScale;
             padding *= (int)backgroundScale;
-            
+            currencyTabFontSize *= (int)backgroundScale;
+            currencyTabOffset *= backgroundScale;
+            currencyTabSize *= backgroundScale;
         }
+        windowSlots = items.Length;
         playerMoney = Player.GetComponent<ExamplePlayer>().getPlayerMoney();
         InitBackgroundImage();
-        InitTitle();
-
         InitPanel();
+        Title = "" + playerMoney;
+        CurrencyTabSetUp();
 
-        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void InitBackgroundImage()
     {
         backgroundPosition.y *= -1;
-       
+
         if (!scaleAllToBackground)
         {
             Width *= backgroundScale;
             Height *= backgroundScale;
         }
-       
+
         Image backgroundImage = GetComponentInChildren<Image>();
         backgroundImage.sprite = background;
         backgroundImage.rectTransform.anchoredPosition = backgroundPosition;
@@ -122,28 +127,9 @@ public class ShopMenuController : MonoBehaviour
 
     }
 
-    void InitTitle()
-    {
-
-        TitlePosition.y *= -1;
-        Text TitleOb = GetComponentInChildren<Text>();
-
-        if (font != null)
-        {
-            TitleOb.font = font;
-        }
-       
-        TitleOb.text = Title;
-        TitleOb.color = fontColor;
-        TitleOb.fontSize = (int)fontSize;
-        TitleOb.rectTransform.sizeDelta = new Vector2(Width, Height);
-        TitlePosition += backgroundPosition;
-        TitleOb.rectTransform.anchoredPosition = TitlePosition;
-    }
-
-
     void InitPanel()
     {
+        // this is pain
         GameObject panel = new GameObject();
         panel.name = "Panel Tile Grid";
         panel.AddComponent<CanvasRenderer>();
@@ -157,7 +143,7 @@ public class ShopMenuController : MonoBehaviour
         // offset
         // type of 
 
-        grid.cellSize = new Vector2(cellsize, cellsize);
+        grid.cellSize = cellsize;
         RectTransform panelRectTransform = panel.GetComponent<RectTransform>();
         panelRectTransform.anchorMin = new Vector2(0, 1);
         panelRectTransform.anchorMax = new Vector2(0, 1);
@@ -174,26 +160,30 @@ public class ShopMenuController : MonoBehaviour
         grid.SetLayoutHorizontal();
         grid.constraint = GridLayoutGroup.Constraint.Flexible;
         CalculateColumnCount(grid);
-        grid.cellSize = new Vector2(cellsize, cellsize);
+        grid.cellSize = cellsize;
         grid.padding.left = padding.x;
-        grid.padding.top = padding.y ;
+        grid.padding.top = padding.y;
         grid.padding.right = padding.x;
-        grid.padding.bottom = padding.y ;
+        grid.padding.bottom = padding.y;
         for (int i = 0; i < windowSlots; i++)
         {
             GameObject windowSlot = new GameObject();
-           
-            
+
             windowSlot.name = "Window Box " + i;
             windowSlot.AddComponent<Image>();
             windowSlot.GetComponent<Image>().sprite = itemBorderBoxSprite;
             if (i < items.Length)
             {
+
                 GameObject button = Instantiate(buttonPrefab);
-                button.GetComponent<ShopButtonScript>().SetItem(items[i], new Vector2(cellsize,cellsize));
+
+                button.GetComponent<ShopButtonScript>().SetItem(items[i], cellsize / 2);
+
                 button.transform.SetParent(windowSlot.transform);
+                button.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + 18, button.transform.position.z);
+                button.GetComponent<ShopButtonScript>().InitTimerImage(windowSlot.GetComponent<RectTransform>(), cellsize);
+
             }
-            
             windowSlot.transform.SetParent(grid.transform);
         }
     }
@@ -202,14 +192,75 @@ public class ShopMenuController : MonoBehaviour
     {
         constraintCount = g.constraintCount;
         int numInRow = windowSlots / constraintCount;
-        // cellsize = (purchaseGridBackgroundSize.x - 20 - itemBoxGridOffset * ( numInRow )) / numInRow;
-        // float boxy = ((cellsize + itemBoxGridOffset) * numInRow) - itemBoxGridOffset;
         g.spacing = new Vector2(itemBoxGridOffset, itemBoxGridOffset);
-        // g.constraintCount = constraintCount;
-
     }
 
 
+    public void BuyItem(GameObject t_itemBought, int t_itemPrice)
+    {
+        // add item to an inventory here not included in component spec
+        playerMoney -= t_itemPrice;
+        print("Bought a " + t_itemBought.GetComponent<ItemObjectScript>().GetItemName());
+        UpdateCurrencyText(playerMoney);
+        GameObject newItem = new GameObject();
+        Instantiate(t_itemBought, newItem.transform);
+        newItem.GetComponentInChildren<ItemObjectScript>().setBought(true);
+        newItem.GetComponentInChildren<ItemObjectScript>().setPosition(GetMousePosition());
+    }
+
+    void CurrencyTabSetUp()
+    {
+        currencyTabOffset.y *= -1;
+        currencyTab = new GameObject();
+        currencyTab.AddComponent<Image>();
+        currencyTab.AddComponent<SpriteRenderer>();
+        currencyTab.GetComponent<Image>().sprite = currencyTabSprite;
+
+        RectTransform ctTR = currencyTab.GetComponent<RectTransform>();
+        ctTR.GetComponent<RectTransform>().sizeDelta = currencyTabSize;
+
+        ctTR.anchorMin = new Vector2(0, 1);
+        ctTR.anchorMax = new Vector2(0, 1);
+        ctTR.pivot = new Vector2(0.0f, 1f);
+        currencyTab.transform.SetParent(GetComponentInParent<Transform>());
+        ctTR.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0) + currencyTabOffset;
+
+        InitCurrencyText(ctTR.GetComponent<Transform>());
+    }
+
+    void InitCurrencyText(Transform t)
+    {
+        TitlePosition.y *= -1;
+        TitleOb = GetComponentInChildren<Text>();
+
+        if (font != null)
+        {
+            TitleOb.font = font;
+        }
+
+
+        TitleOb.color = fontColor;
+        TitleOb.fontSize = (int)fontSize;
+        TitleOb.rectTransform.sizeDelta = new Vector2(Width, Height);
+        TitlePosition += backgroundPosition;
+        TitleOb.rectTransform.anchoredPosition = TitlePosition;
+        TitleOb.transform.SetParent(t);
+        TitleOb.text = Title;
+        UpdateCurrencyText(playerMoney);
+    }
+    public void UpdateCurrencyText(int money)
+    {
+        Title = "" + money;
+        TitleOb.text = Title;
+    }
+
+    public void UpdatePlayerMoney(int money)
+    {
+        playerMoney += money;
+        UpdateCurrencyText(playerMoney);
+    }
+
+    public Vector2 GetMousePosition() { return Camera.main.ScreenToWorldPoint(Input.mousePosition); }
     public bool CanAfford(int t_itemPrice)
     {
         if (playerMoney < t_itemPrice)
@@ -224,16 +275,15 @@ public class ShopMenuController : MonoBehaviour
 
         return false; // something weird has happened
     }
-   
-   public void BuyItem(GameObject t_itemBought, int t_itemPrice)
+
+    public int GetPlayerMoney() { return playerMoney; }
+
+
+    public void AddItem(GameObject t_item)
     {
-        // add item to an inventory here not included in component spec
-        playerMoney -= t_itemPrice;
-        print("Bought a " + t_itemBought.GetComponent<ItemObjectScript>().GetItemName());
+        int count = items.Length;
+        items[count] = t_item; // if this throws an error try count +1
+        InitPanel();
     }
 
-    public int GetPlayerMoney()
-    {
-        return playerMoney;
-    }
 }
