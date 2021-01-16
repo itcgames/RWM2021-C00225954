@@ -139,10 +139,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5241476739236944838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d82d2558b3ae141a3b7bd7dcf0d942, type: 3}
+  m_Script: {fileID: 11500000, guid: 7662766c6327a214cafe80d43866cd1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop: {fileID: 0}
+  shop: {fileID: 6289544888785273049, guid: 52d6c70f04387bb4aa50bed844e22b0b, type: 3}
   itemSprite: {fileID: 0}
-  cantAffordColor: {r: 0.6132076, g: 0.054957267, b: 0.054957267, a: 0.89411765}
-  canAffordColor: {r: 0.11160554, g: 0.41509432, b: 0.118270956, a: 1}
+  cantAffordColor: {r: 0.4528302, g: 0.10893556, b: 0.10893556, a: 0.89411765}
+  canAffordColor: {r: 0, g: 0, b: 0, a: 0}
+  fontSize: 30
+  timerColor: {r: 0, g: 0, b: 0, a: 0}
