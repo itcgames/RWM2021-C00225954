@@ -46,3 +46,6 @@ MonoBehaviour:
   priceOfItem: 50
   itemSprite: {fileID: 21300000, guid: 6ce3532a0ab0de743b1489848b7d86ed, type: 3}
   ItemName: Peashooter
+  coolDownAfterPurchase: 5
+  actionCoolDownTimer: 2
+  itemID: 1

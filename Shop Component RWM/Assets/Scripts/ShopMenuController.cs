@@ -80,7 +80,7 @@ public class ShopMenuController : MonoBehaviour
     public int currencyTabFontSize;
     GameObject currencyTab;
     Text currencyText;
-    Text TitleOb;
+    Text playerMoneyText;
     // Start is called before the first frame update
     void Start()
     {
@@ -231,27 +231,27 @@ public class ShopMenuController : MonoBehaviour
     void InitCurrencyText(Transform t)
     {
         TitlePosition.y *= -1;
-        TitleOb = GetComponentInChildren<Text>();
+        playerMoneyText = GetComponentInChildren<Text>();
 
         if (font != null)
         {
-            TitleOb.font = font;
+            playerMoneyText.font = font;
         }
 
 
-        TitleOb.color = fontColor;
-        TitleOb.fontSize = (int)fontSize;
-        TitleOb.rectTransform.sizeDelta = new Vector2(Width, Height);
+        playerMoneyText.color = fontColor;
+        playerMoneyText.fontSize = (int)fontSize;
+        playerMoneyText.rectTransform.sizeDelta = new Vector2(Width, Height);
         TitlePosition += backgroundPosition;
-        TitleOb.rectTransform.anchoredPosition = TitlePosition;
-        TitleOb.transform.SetParent(t);
-        TitleOb.text = Title;
+        playerMoneyText.rectTransform.anchoredPosition = TitlePosition;
+        playerMoneyText.transform.SetParent(t);
+        playerMoneyText.text = Title;
         UpdateCurrencyText(playerMoney);
     }
     public void UpdateCurrencyText(int money)
     {
         Title = "" + money;
-        TitleOb.text = Title;
+        playerMoneyText.text = Title;
     }
 
     public void UpdatePlayerMoney(int money)

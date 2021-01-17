@@ -297,6 +297,16 @@ PrefabInstance:
       propertyPath: fontColor.a
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6289544888785273054, guid: 52d6c70f04387bb4aa50bed844e22b0b,
+        type: 3}
+      propertyPath: TitlePosition.x
+      value: 56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289544888785273054, guid: 52d6c70f04387bb4aa50bed844e22b0b,
+        type: 3}
+      propertyPath: TitlePosition.y
+      value: 155
+      objectReference: {fileID: 0}
     - target: {fileID: 6289544888785273058, guid: 52d6c70f04387bb4aa50bed844e22b0b,
         type: 3}
       propertyPath: m_LocalPosition.x
