@@ -32,12 +32,7 @@ public class ShopButtonScript : MonoBehaviour
 
         cb = GetComponent<Button>().colors;
         defaultColor = cb.normalColor;
-
-
-
-
         canBuy = true;
-
 
     }
 
@@ -130,9 +125,9 @@ public class ShopButtonScript : MonoBehaviour
 
     void SetCostString()
     {
-        //GetComponentInChildren<Text>().rectTransform.anchoredPosition = new Vector2(0, -57);
-        //GetComponentInChildren<Text>().fontSize = fontSize;
-        //GetComponentInChildren<Text>().text = "" + itemCost;
+        GetComponentInChildren<Text>().rectTransform.anchoredPosition = new Vector2(0, -57);
+        GetComponentInChildren<Text>().fontSize = fontSize;
+        GetComponentInChildren<Text>().text = "" + itemCost;
     }
 
 
@@ -169,8 +164,6 @@ public class ShopButtonScript : MonoBehaviour
         {
             timeLeft -= Time.deltaTime;
             trt.sizeDelta = new Vector2(trt.sizeDelta.x, timerH * (timeLeft / itemCooldown));
-
-
         }
         else
         {
