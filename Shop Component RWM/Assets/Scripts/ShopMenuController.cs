@@ -81,6 +81,9 @@ public class ShopMenuController : MonoBehaviour
     GameObject currencyTab;
     Text currencyText;
     Text playerMoneyText;
+
+    public Button minimizeButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -103,6 +106,7 @@ public class ShopMenuController : MonoBehaviour
         playerMoney = Player.GetComponent<ExamplePlayer>().getPlayerMoney();
         InitBackgroundImage();
         InitPanel();
+        InitMinimizeButton();
         Title = "" + playerMoney;
         CurrencyTabSetUp();
 
@@ -284,6 +288,14 @@ public class ShopMenuController : MonoBehaviour
         int count = items.Length;
         items[count] = t_item; // if this throws an error try count +1
         InitPanel();
+    }
+
+    private void InitMinimizeButton()
+    {
+        if (minimizeButton != null)
+        {
+            minimizeButton.transform.position += new Vector3(Width,-6.0f,0.0f);
+        }
     }
 
 }

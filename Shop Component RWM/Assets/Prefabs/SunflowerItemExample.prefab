@@ -97,3 +97,6 @@ MonoBehaviour:
   priceOfItem: 25
   itemSprite: {fileID: 21300000, guid: 706cbc560755395418c6649d6d626cfa, type: 3}
   ItemName: Sunflower
+  coolDownAfterPurchase: 10
+  actionCoolDownTimer: 0
+  itemID: 2
