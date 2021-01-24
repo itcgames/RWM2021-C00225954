@@ -226,3 +226,4 @@ MonoBehaviour:
   cantAffordColor: {r: 0.4528302, g: 0.10893556, b: 0.10893556, a: 0.89411765}
   canAffordColor: {r: 1, g: 1, b: 1, a: 1}
   fontSize: 15
+  timerColor: {r: 0, g: 0, b: 0, a: 0.6392157}

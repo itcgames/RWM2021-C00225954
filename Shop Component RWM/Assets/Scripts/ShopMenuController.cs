@@ -193,7 +193,7 @@ public class ShopMenuController : MonoBehaviour
 
                 button.transform.SetParent(windowSlot.transform);
                 button.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + 18, button.transform.position.z);
-
+                button.GetComponent<ShopButtonScript>().InitTimerImage(windowSlot.GetComponent<RectTransform>(), cellsize);
 
                 buttons.Add(button);
             }
@@ -316,4 +316,9 @@ public class ShopMenuController : MonoBehaviour
         }
     }
 
+    public void ResetButtonTimer(int t_buttonID)
+    {
+
+        buttons[t_buttonID].GetComponent<ShopButtonScript>().ResetTimer();
+    }
 }
