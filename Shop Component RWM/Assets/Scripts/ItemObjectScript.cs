@@ -14,7 +14,7 @@ public class ItemObjectScript : MonoBehaviour
 
     bool itemBought;
     public int itemID; // mainly used to just scale the item correctly due to varying sprite sizes
-
+    bool canMoveItem = false;
     void Start()
     {
         if (itemSprite != null)
@@ -25,11 +25,18 @@ public class ItemObjectScript : MonoBehaviour
 
 
         itemBought = true;
-
+        canMoveItem = true;
         currentActionCoolDownCount = actionCoolDownTimer;
 
     }
 
+    private void Update()
+    {
+        if (itemBought)
+        {
+            moveItem();
+        }
+    }
     public Sprite GetItemSpriteFromScript()
     {
         if (itemSprite != null)
@@ -46,11 +53,23 @@ public class ItemObjectScript : MonoBehaviour
 
     public int GetCoolDownTime() { return coolDownAfterPurchase; }
 
-    public void setBought(bool t_isBought) { itemBought = t_isBought; }
+    public void setBought(bool t_isBought) { itemBought = t_isBought; canMoveItem = true; }
 
     public void setPosition(Vector2 t_pos) { transform.position = t_pos; }
 
     public int GetPriceOfItem() { return priceOfItem; }
 
+    private void moveItem()
+    {
+        if (canMoveItem)
+        {
+            GetComponent<DragItem>().MoveItem();
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                canMoveItem = false;
+            }
+        }
+    }
 
 }
