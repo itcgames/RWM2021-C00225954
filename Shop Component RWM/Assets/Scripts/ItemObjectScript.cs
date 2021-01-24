@@ -15,6 +15,7 @@ public class ItemObjectScript : MonoBehaviour
     bool itemBought;
     public int itemID; // mainly used to just scale the item correctly due to varying sprite sizes
     bool canMoveItem = false;
+    static int buttonNum;
     void Start()
     {
         if (itemSprite != null)

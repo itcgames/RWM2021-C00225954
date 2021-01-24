@@ -47,11 +47,12 @@ public class MinimizebuttonScript : MonoBehaviour
             if (moveButtonWhenMenuIsHidden)
             {
                 transform.position = positionWhenMenuOpen;
-                for (int i = 0; i < Shop.transform.childCount; i++)
-                {
-                    Vector2 ah = Shop.transform.GetChild(i).transform.position;
-                    Shop.transform.GetChild(i).transform.position = ah - moveShopBy;
-                }
+               
+            }
+            for (int i = 0; i < Shop.transform.childCount; i++)
+            {
+                Vector2 ah = Shop.transform.GetChild(i).transform.position;
+                Shop.transform.GetChild(i).transform.position = ah - moveShopBy;
             }
         }
        
