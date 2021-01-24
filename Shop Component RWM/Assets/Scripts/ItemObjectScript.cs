@@ -82,20 +82,8 @@ public class ItemObjectScript : MonoBehaviour
     private void ResetButtonTimerOnDelete()
     {
         int buttonNum = 0;
-        switch (itemID)
-        {
-            case 1:
-                // sunflower
-                buttonNum = 0;
-                break;
-            case 2:
-                buttonNum = 1;
-                // pea
-                break;
-           
-            default:
-                break;
-        }
+        itemID--;
+        buttonNum = itemID;
         FindObjectOfType<ShopMenuController>().ResetButtonTimer(buttonNum);
     }
 

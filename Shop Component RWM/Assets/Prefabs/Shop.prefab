@@ -34,9 +34,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -50, y: 50}
+  m_SizeDelta: {x: 1000, y: 100}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &6289544888480453323
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -59,12 +59,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8fc0431d5ee9a534cb796beafa213c44, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -192,19 +192,19 @@ MonoBehaviour:
   Width: 600
   Height: 160
   backgroundScale: 1
-  scaleAllToBackground: 0
+  scaleAllToBackground: 1
   backgroundPosition: {x: 0, y: 0}
   Title: Shop
-  TitlePosition: {x: 0, y: 0}
+  TitlePosition: {x: 56, y: 155}
   font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   fontSize: 20
-  fontColor: {r: 0, g: 0, b: 0, a: 0}
+  fontColor: {r: 0, g: 0, b: 0, a: 1}
   gridBackgroundSprite: {fileID: 21300000, guid: d60f0f7e5d22d604f9b78681d52f0624,
     type: 3}
   itemBorderBoxSprite: {fileID: 21300000, guid: 1e6f62cb96ab85a42b024cb5fbf0a95e,
     type: 3}
   purchaseWindowPos: {x: 140, y: 5}
-  purchaseGridBackgroundSize: {x: 500, y: 150}
+  purchaseGridBackgroundSize: {x: 450, y: 150}
   cellsize: {x: 90, y: 122}
   constraintCount: 1
   itemBoxGridOffset: 5
@@ -212,9 +212,11 @@ MonoBehaviour:
   items:
   - {fileID: 7945967745792520458, guid: 5e88b5c37af156944992669fbe6abb8b, type: 3}
   - {fileID: 3727499909615077395, guid: f7c23406e74107c43890d53c9451b9a5, type: 3}
+  - {fileID: 3727499909615077395, guid: f7c23406e74107c43890d53c9451b9a5, type: 3}
+  - {fileID: 3727499909615077395, guid: f7c23406e74107c43890d53c9451b9a5, type: 3}
   buttonPrefab: {fileID: 5241476739236944838, guid: 3b243b3685a04b34fb77822bd0b5f339,
     type: 3}
-  buttonHoveredColour: {r: 0, g: 0, b: 0, a: 0.46666667}
+  buttonHoveredColour: {r: 1, g: 0, b: 0, a: 0.8666667}
   Player: {fileID: 5423929034763772157, guid: 6715e528515f93248834b890603fcb69, type: 3}
   currencyTabSprite: {fileID: 21300000, guid: 1408f6fd0e84c22499f975ab62a177c2, type: 3}
   currencyTabSize: {x: 122, y: 180}
