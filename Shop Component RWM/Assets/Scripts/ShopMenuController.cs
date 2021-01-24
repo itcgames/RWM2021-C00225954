@@ -68,7 +68,7 @@ public class ShopMenuController : MonoBehaviour
     public GameObject buttonPrefab;
 
     public Color buttonHoveredColour;
-
+    List<GameObject> buttons = new List<GameObject>();
 
 
     public GameObject Player;
@@ -80,7 +80,7 @@ public class ShopMenuController : MonoBehaviour
     public int currencyTabFontSize;
     GameObject currencyTab;
     Text currencyText;
-    Text TitleOb;
+    Text playerMoneyText;
 
     public Button minimizeButton;
 
@@ -169,7 +169,7 @@ public class ShopMenuController : MonoBehaviour
             Vector2 windowSize = itemBorderBoxSprite.rect.size;
             windowSize.x = purchaseGridBackgroundSize.x / windowSlots - padding.x;
             windowSize.y = purchaseGridBackgroundSize.y - padding.y * 2;
-            
+
             cellsize = windowSize;
         }
         grid.cellSize = cellsize;
@@ -193,8 +193,9 @@ public class ShopMenuController : MonoBehaviour
 
                 button.transform.SetParent(windowSlot.transform);
                 button.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + 18, button.transform.position.z);
-                
 
+
+                buttons.Add(button);
             }
             windowSlot.transform.SetParent(grid.transform);
         }
@@ -218,6 +219,11 @@ public class ShopMenuController : MonoBehaviour
         Instantiate(t_itemBought, newItem.transform);
         newItem.GetComponentInChildren<ItemObjectScript>().setBought(true);
         newItem.GetComponentInChildren<ItemObjectScript>().setPosition(GetMousePosition());
+
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i].GetComponent<ShopButtonScript>().ChangeItemColor();
+        }
     }
 
     void CurrencyTabSetUp()
@@ -243,31 +249,36 @@ public class ShopMenuController : MonoBehaviour
     void InitCurrencyText(Transform t)
     {
         TitlePosition.y *= -1;
-        TitleOb = GetComponentInChildren<Text>();
-        TitleOb.raycastTarget = false;
+        playerMoneyText = GetComponentInChildren<Text>();
+
         if (font != null)
         {
-            TitleOb.font = font;
+            playerMoneyText.font = font;
         }
 
 
-        TitleOb.color = fontColor;
-        TitleOb.fontSize = (int)fontSize;
-        TitleOb.rectTransform.sizeDelta = new Vector2(Width, Height);
+        playerMoneyText.color = fontColor;
+        playerMoneyText.fontSize = (int)fontSize;
+        playerMoneyText.rectTransform.sizeDelta = new Vector2(Width, Height);
         TitlePosition += backgroundPosition;
-        TitleOb.rectTransform.anchoredPosition = TitlePosition;
-        TitleOb.transform.SetParent(t);
-        TitleOb.text = Title;
+        playerMoneyText.rectTransform.anchoredPosition = TitlePosition;
+        playerMoneyText.transform.SetParent(t);
+        playerMoneyText.text = Title;
         UpdateCurrencyText(playerMoney);
     }
     public void UpdateCurrencyText(int money)
     {
         Title = "" + money;
-        TitleOb.text = Title;
+        playerMoneyText.text = Title;
     }
+
     public void UpdatePlayerMoney(int money)
     {
         playerMoney += money;
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i].GetComponent<ShopButtonScript>().ChangeItemColor();
+        }
         UpdateCurrencyText(playerMoney);
     }
 
@@ -301,7 +312,7 @@ public class ShopMenuController : MonoBehaviour
     {
         if (minimizeButton != null)
         {
-            minimizeButton.transform.position += new Vector3(Width,-6.0f,0.0f);
+            minimizeButton.transform.position += new Vector3(Width, -6.0f, 0.0f);
         }
     }
 
