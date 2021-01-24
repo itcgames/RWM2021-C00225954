@@ -418,3 +418,9 @@ MigrationBackup/
 .ionide/
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
+Shop Component RWM/Library/ArtifactDB
+Shop Component RWM/Library/ArtifactDB-lock
+Shop Component RWM/Library/SourceAssetDB
+Shop Component RWM/Library/SourceAssetDB-lock
+Shop Component RWM/Temp/UnityLockfile
+Shop Component RWM/Library/SourceAssetDB-lock
