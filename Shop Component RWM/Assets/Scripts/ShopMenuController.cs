@@ -74,13 +74,13 @@ public class ShopMenuController : MonoBehaviour
     public GameObject Player;
     int playerMoney;
 
-    public Sprite currencyTabSprite;
-    public Vector2 currencyTabSize;
-    public Vector2 currencyTabOffset;
-    public int currencyTabFontSize;
-    GameObject currencyTab;
-    Text currencyText;
-    Text playerMoneyText;
+    //public Sprite currencyTabSprite;
+    //public Vector2 currencyTabSize;
+    //public Vector2 currencyTabOffset;
+    //public int currencyTabFontSize;
+    //GameObject currencyTab;
+    //Text currencyText;
+    //Text playerMoneyText;
 
     public Button minimizeButton;
 
@@ -98,9 +98,9 @@ public class ShopMenuController : MonoBehaviour
             Height *= backgroundScale;
             itemBoxGridOffset *= backgroundScale;
             padding *= (int)backgroundScale;
-            currencyTabFontSize *= (int)backgroundScale;
-            currencyTabOffset *= backgroundScale;
-            currencyTabSize *= backgroundScale;
+            //currencyTabFontSize *= (int)backgroundScale;
+            //currencyTabOffset *= backgroundScale;
+            //currencyTabSize *= backgroundScale;
         }
         windowSlots = items.Length;
         playerMoney = Player.GetComponent<ExamplePlayer>().getPlayerMoney();
@@ -108,7 +108,7 @@ public class ShopMenuController : MonoBehaviour
         InitPanel();
         InitMinimizeButton();
         Title = "" + playerMoney;
-        CurrencyTabSetUp();
+       // CurrencyTabSetUp();
 
     }
 
@@ -187,13 +187,13 @@ public class ShopMenuController : MonoBehaviour
             if (i < items.Length)
             {
 
-                //GameObject button = Instantiate(buttonPrefab);
+                GameObject button = Instantiate(buttonPrefab);
 
-                //button.GetComponent<ShopButtonScript>().SetItem(items[i], cellsize / 2);
+                button.GetComponent<ShopButtonScript>().SetItem(items[i], cellsize / 2);
 
-                //button.transform.SetParent(windowSlot.transform);
-                //button.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + 18, button.transform.position.z);
-                //button.GetComponent<ShopButtonScript>().InitTimerImage(windowSlot.GetComponent<RectTransform>(), cellsize);
+                button.transform.SetParent(windowSlot.transform);
+                button.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + 18, button.transform.position.z);
+                
 
             }
             windowSlot.transform.SetParent(grid.transform);
@@ -208,85 +208,85 @@ public class ShopMenuController : MonoBehaviour
     }
 
 
-    public void BuyItem(GameObject t_itemBought, int t_itemPrice)
-    {
-        //// add item to an inventory here not included in component spec
-        //playerMoney -= t_itemPrice;
-        //print("Bought a " + t_itemBought.GetComponent<ItemObjectScript>().GetItemName());
-        //UpdateCurrencyText(playerMoney);
-        //GameObject newItem = new GameObject();
-        //Instantiate(t_itemBought, newItem.transform);
-        //newItem.GetComponentInChildren<ItemObjectScript>().setBought(true);
-        //newItem.GetComponentInChildren<ItemObjectScript>().setPosition(GetMousePosition());
-    }
+    //public void BuyItem(GameObject t_itemBought, int t_itemPrice)
+    //{
+    //    // add item to an inventory here not included in component spec
+    //    playerMoney -= t_itemPrice;
+    //    print("Bought a " + t_itemBought.GetComponent<ItemObjectScript>().GetItemName());
+    //    //UpdateCurrencyText(playerMoney);
+    //    GameObject newItem = new GameObject();
+    //    Instantiate(t_itemBought, newItem.transform);
+    //    newItem.GetComponentInChildren<ItemObjectScript>().setBought(true);
+    //    newItem.GetComponentInChildren<ItemObjectScript>().setPosition(GetMousePosition());
+    //}
 
-    void CurrencyTabSetUp()
-    {
-        currencyTabOffset.y *= -1;
-        currencyTab = new GameObject();
-        currencyTab.AddComponent<Image>();
-        currencyTab.AddComponent<SpriteRenderer>();
-        currencyTab.GetComponent<Image>().sprite = currencyTabSprite;
+    //void CurrencyTabSetUp()
+    //{
+    //    currencyTabOffset.y *= -1;
+    //    currencyTab = new GameObject();
+    //    currencyTab.AddComponent<Image>();
+    //    currencyTab.AddComponent<SpriteRenderer>();
+    //    currencyTab.GetComponent<Image>().sprite = currencyTabSprite;
 
-        RectTransform ctTR = currencyTab.GetComponent<RectTransform>();
-        ctTR.GetComponent<RectTransform>().sizeDelta = currencyTabSize;
+    //    RectTransform ctTR = currencyTab.GetComponent<RectTransform>();
+    //    ctTR.GetComponent<RectTransform>().sizeDelta = currencyTabSize;
 
-        ctTR.anchorMin = new Vector2(0, 1);
-        ctTR.anchorMax = new Vector2(0, 1);
-        ctTR.pivot = new Vector2(0.0f, 1f);
-        currencyTab.transform.SetParent(GetComponentInParent<Transform>());
-        ctTR.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0) + currencyTabOffset;
+    //    ctTR.anchorMin = new Vector2(0, 1);
+    //    ctTR.anchorMax = new Vector2(0, 1);
+    //    ctTR.pivot = new Vector2(0.0f, 1f);
+    //    currencyTab.transform.SetParent(GetComponentInParent<Transform>());
+    //    ctTR.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0) + currencyTabOffset;
 
-        InitCurrencyText(ctTR.GetComponent<Transform>());
-    }
+    //    InitCurrencyText(ctTR.GetComponent<Transform>());
+    //}
 
-    void InitCurrencyText(Transform t)
-    {
-        TitlePosition.y *= -1;
-        playerMoneyText = GetComponentInChildren<Text>();
+    //void InitCurrencyText(Transform t)
+    //{
+    //    TitlePosition.y *= -1;
+    //    playerMoneyText = GetComponentInChildren<Text>();
 
-        if (font != null)
-        {
-            playerMoneyText.font = font;
-        }
+    //    if (font != null)
+    //    {
+    //        playerMoneyText.font = font;
+    //    }
 
 
-        playerMoneyText.color = fontColor;
-        playerMoneyText.fontSize = (int)fontSize;
-        playerMoneyText.rectTransform.sizeDelta = new Vector2(Width, Height);
-        TitlePosition += backgroundPosition;
-        playerMoneyText.rectTransform.anchoredPosition = TitlePosition;
-        playerMoneyText.transform.SetParent(t);
-        playerMoneyText.text = Title;
-        UpdateCurrencyText(playerMoney);
-    }
-    public void UpdateCurrencyText(int money)
-    {
-        Title = "" + money;
-        playerMoneyText.text = Title;
-    }
+    //    playerMoneyText.color = fontColor;
+    //    playerMoneyText.fontSize = (int)fontSize;
+    //    playerMoneyText.rectTransform.sizeDelta = new Vector2(Width, Height);
+    //    TitlePosition += backgroundPosition;
+    //    playerMoneyText.rectTransform.anchoredPosition = TitlePosition;
+    //    playerMoneyText.transform.SetParent(t);
+    //    playerMoneyText.text = Title;
+    //    UpdateCurrencyText(playerMoney);
+    //}
+    //public void UpdateCurrencyText(int money)
+    //{
+    //    Title = "" + money;
+    //    playerMoneyText.text = Title;
+    //}
 
-    public void UpdatePlayerMoney(int money)
-    {
-        playerMoney += money;
-        UpdateCurrencyText(playerMoney);
-    }
+    //public void UpdatePlayerMoney(int money)
+    //{
+    //    playerMoney += money;
+    //    //UpdateCurrencyText(playerMoney);
+    //}
 
     public Vector2 GetMousePosition() { return Camera.main.ScreenToWorldPoint(Input.mousePosition); }
-    public bool CanAfford(int t_itemPrice)
-    {
-        if (playerMoney < t_itemPrice)
-        {
-            return false;
-        }
-        else if (playerMoney >= t_itemPrice)
-        {
+    //public bool CanAfford(int t_itemPrice)
+    //{
+    //    if (playerMoney < t_itemPrice)
+    //    {
+    //        return false;
+    //    }
+    //    else if (playerMoney >= t_itemPrice)
+    //    {
 
-            return true;
-        }
+    //        return true;
+    //    }
 
-        return false; // something weird has happened
-    }
+    //    return false; // something weird has happened
+    //}
 
     public int GetPlayerMoney() { return playerMoney; }
 

@@ -221,9 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7662766c6327a214cafe80d43866cd1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shop: {fileID: 0}
+  shop: {fileID: 6289544888785273049, guid: 52d6c70f04387bb4aa50bed844e22b0b, type: 3}
   itemSprite: {fileID: 0}
   cantAffordColor: {r: 0.4528302, g: 0.10893556, b: 0.10893556, a: 0.89411765}
   canAffordColor: {r: 1, g: 1, b: 1, a: 1}
   fontSize: 15
-  timerColor: {r: 0, g: 0, b: 0, a: 0.5882353}
