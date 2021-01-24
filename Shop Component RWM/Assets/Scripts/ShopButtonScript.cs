@@ -79,38 +79,38 @@ public class ShopButtonScript : MonoBehaviour
         GetComponent<Button>().colors = cb;
     }
 
-    //public bool CanPlayerBuyItem()
-    //{
-    //    if (canBuy)
-    //    {
-    //        if (GetComponentInParent<ShopMenuController>().CanAfford(itemCost))
-    //        {
-    //            ChangeItemColor();
-    //            return true;
-    //        }
-    //    }
+    public bool CanPlayerBuyItem()
+    {
+        if (canBuy)
+        {
+            if (GetComponentInParent<ShopMenuController>().CanAfford(itemCost))
+            {
+                ChangeItemColor();
+                return true;
+            }
+        }
 
-    //    ChangeItemColor();
-    //    return false;
-    //}
+        ChangeItemColor();
+        return false;
+    }
 
     public void OnItemClicked()
     {
-        //if (canBuy)
-        //{
-        //    if (CanPlayerBuyItem())
-        //    {
-        //        GetComponentInParent<ShopMenuController>().BuyItem(item, itemCost);
-        //        print("Can Afford");
-        //        canBuy = false;
+        if (canBuy)
+        {
+            if (CanPlayerBuyItem())
+            {
+                GetComponentInParent<ShopMenuController>().BuyItem(item, itemCost);
+                print("Can Afford");
+                canBuy = false;
 
-        //    }
-        //    else
-        //    {
-        //        print(GetComponentInParent<ShopMenuController>().GetPlayerMoney());
-        //        print("Can't Afford");
-        //    }
-        //}
+            }
+            else
+            {
+                print(GetComponentInParent<ShopMenuController>().GetPlayerMoney());
+                print("Can't Afford");
+            }
+        }
 
     }
 
