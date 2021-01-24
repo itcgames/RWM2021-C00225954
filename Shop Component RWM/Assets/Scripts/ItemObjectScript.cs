@@ -10,7 +10,6 @@ public class ItemObjectScript : MonoBehaviour
     public int coolDownAfterPurchase;
    
     public int actionCoolDownTimer;
-    bool isActive;
     int currentActionCoolDownCount;
 
     bool itemBought;
@@ -24,7 +23,7 @@ public class ItemObjectScript : MonoBehaviour
            
         }
      
-        isActive = false;
+
         itemBought = true;
 
         currentActionCoolDownCount = actionCoolDownTimer;
