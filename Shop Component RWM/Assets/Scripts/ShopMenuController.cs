@@ -187,13 +187,13 @@ public class ShopMenuController : MonoBehaviour
             if (i < items.Length)
             {
 
-                GameObject button = Instantiate(buttonPrefab);
+                //GameObject button = Instantiate(buttonPrefab);
 
-                button.GetComponent<ShopButtonScript>().SetItem(items[i], cellsize / 2);
+                //button.GetComponent<ShopButtonScript>().SetItem(items[i], cellsize / 2);
 
-                button.transform.SetParent(windowSlot.transform);
-                button.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + 18, button.transform.position.z);
-                button.GetComponent<ShopButtonScript>().InitTimerImage(windowSlot.GetComponent<RectTransform>(), cellsize);
+                //button.transform.SetParent(windowSlot.transform);
+                //button.transform.position = new Vector3(button.transform.position.x, button.transform.position.y + 18, button.transform.position.z);
+                //button.GetComponent<ShopButtonScript>().InitTimerImage(windowSlot.GetComponent<RectTransform>(), cellsize);
 
             }
             windowSlot.transform.SetParent(grid.transform);
@@ -210,14 +210,14 @@ public class ShopMenuController : MonoBehaviour
 
     public void BuyItem(GameObject t_itemBought, int t_itemPrice)
     {
-        // add item to an inventory here not included in component spec
-        playerMoney -= t_itemPrice;
-        print("Bought a " + t_itemBought.GetComponent<ItemObjectScript>().GetItemName());
-        UpdateCurrencyText(playerMoney);
-        GameObject newItem = new GameObject();
-        Instantiate(t_itemBought, newItem.transform);
-        newItem.GetComponentInChildren<ItemObjectScript>().setBought(true);
-        newItem.GetComponentInChildren<ItemObjectScript>().setPosition(GetMousePosition());
+        //// add item to an inventory here not included in component spec
+        //playerMoney -= t_itemPrice;
+        //print("Bought a " + t_itemBought.GetComponent<ItemObjectScript>().GetItemName());
+        //UpdateCurrencyText(playerMoney);
+        //GameObject newItem = new GameObject();
+        //Instantiate(t_itemBought, newItem.transform);
+        //newItem.GetComponentInChildren<ItemObjectScript>().setBought(true);
+        //newItem.GetComponentInChildren<ItemObjectScript>().setPosition(GetMousePosition());
     }
 
     void CurrencyTabSetUp()

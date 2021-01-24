@@ -110,11 +110,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &6289544888785273053
 Canvas:
   m_ObjectHideFlags: 0
@@ -198,7 +198,7 @@ MonoBehaviour:
   font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   fontSize: 20
   fontColor: {r: 0, g: 0, b: 0, a: 0}
-  gridBackgroundSprite: {fileID: 21300000, guid: 491c7b9f9368e1d40b82ec1e9de852d5,
+  gridBackgroundSprite: {fileID: 21300000, guid: d60f0f7e5d22d604f9b78681d52f0624,
     type: 3}
   itemBorderBoxSprite: {fileID: 21300000, guid: 1e6f62cb96ab85a42b024cb5fbf0a95e,
     type: 3}
@@ -213,7 +213,7 @@ MonoBehaviour:
   - {fileID: 3727499909615077395, guid: f7c23406e74107c43890d53c9451b9a5, type: 3}
   buttonPrefab: {fileID: 0}
   buttonHoveredColour: {r: 0, g: 0, b: 0, a: 0}
-  Player: {fileID: 0}
+  Player: {fileID: 5423929034763772157, guid: 6715e528515f93248834b890603fcb69, type: 3}
   currencyTabSprite: {fileID: 0}
   currencyTabSize: {x: 0, y: 0}
   currencyTabOffset: {x: 0, y: 0}
