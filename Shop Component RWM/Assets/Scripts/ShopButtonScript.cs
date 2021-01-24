@@ -18,7 +18,7 @@ public class ShopButtonScript : MonoBehaviour
     public int fontSize;
 
     bool canBuy;
-    
+
     RectTransform trt;
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class ShopButtonScript : MonoBehaviour
 
     void Update()
     {
-        
+
 
     }
     public void SetItem(GameObject t_item, Vector2 t_buttonSize)
@@ -42,7 +42,7 @@ public class ShopButtonScript : MonoBehaviour
         itemCost = item.GetComponent<ItemObjectScript>().GetPriceOfItem();
         itemSprite = item.GetComponent<ItemObjectScript>().GetItemSpriteFromScript();
         InitButton(t_buttonSize);
-       
+
     }
 
 
@@ -81,14 +81,13 @@ public class ShopButtonScript : MonoBehaviour
 
     public bool CanPlayerBuyItem()
     {
-        if (canBuy)
+
+        if (GetComponentInParent<ShopMenuController>().CanAfford(itemCost))
         {
-            if (GetComponentInParent<ShopMenuController>().CanAfford(itemCost))
-            {
-                ChangeItemColor();
-                return true;
-            }
+            ChangeItemColor();
+            return true;
         }
+
 
         ChangeItemColor();
         return false;
@@ -96,21 +95,20 @@ public class ShopButtonScript : MonoBehaviour
 
     public void OnItemClicked()
     {
-        if (canBuy)
-        {
-            if (CanPlayerBuyItem())
-            {
-                GetComponentInParent<ShopMenuController>().BuyItem(item, itemCost);
-                print("Can Afford");
-                canBuy = false;
 
-            }
-            else
-            {
-                print(GetComponentInParent<ShopMenuController>().GetPlayerMoney());
-                print("Can't Afford");
-            }
+        if (CanPlayerBuyItem())
+        {
+            GetComponentInParent<ShopMenuController>().BuyItem(item, itemCost);
+            print("Can Afford");
+            canBuy = false;
+
         }
+        else
+        {
+            print(GetComponentInParent<ShopMenuController>().GetPlayerMoney());
+            print("Can't Afford");
+        }
+
 
     }
 
@@ -122,6 +120,6 @@ public class ShopButtonScript : MonoBehaviour
     }
 
 
-  
+
 
 }

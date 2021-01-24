@@ -32,7 +32,7 @@ public class ItemObjectScript : MonoBehaviour
 
     private void Update()
     {
-        if (itemBought)
+        if (canMoveItem)
         {
             moveItem();
         }
@@ -74,7 +74,7 @@ public class ItemObjectScript : MonoBehaviour
 
                 FindObjectOfType<ShopMenuController>().UpdatePlayerMoney(priceOfItem);
                 Destroy(this.gameObject);
-                
+
             }
         }
     }
