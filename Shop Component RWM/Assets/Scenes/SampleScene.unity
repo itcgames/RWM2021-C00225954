@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Shop: {fileID: 845357002}
-  whenShopMinimizedPosition: {x: 2, y: -2}
+  whenShopMinimizedPosition: {x: 2, y: -50}
   moveButtonWhenMenuIsHidden: 1
 --- !u!1 &845357002 stripped
 GameObject:
