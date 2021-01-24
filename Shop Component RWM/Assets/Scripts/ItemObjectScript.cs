@@ -69,6 +69,13 @@ public class ItemObjectScript : MonoBehaviour
             {
                 canMoveItem = false;
             }
+            if (Input.GetMouseButtonDown(1)) // right click
+            {
+
+                FindObjectOfType<ShopMenuController>().UpdatePlayerMoney(priceOfItem);
+                Destroy(this.gameObject);
+                
+            }
         }
     }
 
