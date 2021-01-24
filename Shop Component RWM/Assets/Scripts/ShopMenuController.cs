@@ -164,6 +164,14 @@ public class ShopMenuController : MonoBehaviour
         grid.SetLayoutHorizontal();
         grid.constraint = GridLayoutGroup.Constraint.Flexible;
         CalculateColumnCount(grid);
+        if (scaleAllToBackground)
+        {
+            Vector2 windowSize = itemBorderBoxSprite.rect.size;
+            windowSize.x = purchaseGridBackgroundSize.x / windowSlots - padding.x;
+            windowSize.y = purchaseGridBackgroundSize.y - padding.y * 2;
+            
+            cellsize = windowSize;
+        }
         grid.cellSize = cellsize;
         grid.padding.left = padding.x;
         grid.padding.top = padding.y;

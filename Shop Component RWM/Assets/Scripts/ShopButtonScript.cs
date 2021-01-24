@@ -125,6 +125,7 @@ public class ShopButtonScript : MonoBehaviour
 
     void SetCostString()
     {
+       
         GetComponentInChildren<Text>().rectTransform.anchoredPosition = new Vector2(0, -60);
         GetComponentInChildren<Text>().fontSize = fontSize;
         GetComponentInChildren<Text>().text = "" + itemCost;
